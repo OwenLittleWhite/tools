@@ -5,31 +5,31 @@
       <v-layout wrap row grid-list-xl justify-start>
           <v-flex md10 sm10 xs10 mb-2>
             <v-layout wrap row grid-list-xl justify-start align-center>
-              <v-flex md1 sm1 xs1 mb-2>
+              <v-flex md1 sm2 xs2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">现在：</div>
               </v-flex>
                <v-flex md11 sm11 xs11 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left time-text">{{nowTime}}</div>
               </v-flex>
-              <v-flex md1 sm1 xs1 mb-2>
+              <v-flex md1 sm2 xs2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间戳：</div>
               </v-flex>
-               <v-flex md3 sm3 xs3 mb-2>
+               <v-flex md3 sm4 xs4 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                    <v-text-field v-model="timeSampleTime" type="number" solo></v-text-field>
                 </div>
               </v-flex>
-              <v-flex md2 sm2 xs2 ml-1 mb-2>
+              <v-flex md2 sm3 xs3 ml-1 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-select :items="units" v-model="unit" label="Unit field" solo></v-select>
                 </div>
               </v-flex>
-              <v-flex md1 sm1 xs1 ml-1 mb-2>
+              <v-flex md1 sm2 xs2 ml-1 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-text-field value="转换>>" type="button" @click="updateDatestr()" solo></v-text-field>
                 </div>
               </v-flex>
-              <v-flex md3 sm3 xs3 ml-1 mb-2>
+              <v-flex md3 sm4 xs4 ml-1 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-text-field :value="dateStr" type="text"  solo></v-text-field>
                 </div>
@@ -143,8 +143,6 @@ time.time()`
     convertToDateStr(mill) {
       if (this.unit === "秒") {
         mill = mill * 1000;
-      } else {
-        mill = mill
       }
       let d = new Date(mill);
       let year = d.getFullYear();
@@ -153,7 +151,6 @@ time.time()`
       let hour = ("00" + d.getHours()).slice(-2);
       let min = ("00" + d.getMinutes()).slice(-2);
       let sec = ("00" + d.getSeconds()).slice(-2);
-      let _mill = ("000" + d.getMilliseconds()).slice(-3);
       return (
         year +
         "-" +
