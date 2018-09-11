@@ -1,6 +1,6 @@
 <template>
-<v-container>
-<v-layout row wrap class="mt-5" justify-space-between="row">
+<v-footer>
+<v-layout row wrap justify-space-between="row">
    <v-layout
       justify-space-around
       row
@@ -43,7 +43,7 @@
     </v-layout>
 
     </v-layout>
-</v-container>
+</v-footer>
 </template>
 
 <script>

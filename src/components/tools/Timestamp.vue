@@ -1,22 +1,61 @@
 <template>
 <v-container>
-  <v-layout wrap row >
-    <v-flex md12 sm12 xs12 justify-space-between>
-      <v-data-table
-          :headers="headers"
-          :items="desserts"
-          hide-actions
-          class="elevation-1"
-        >
-          <template slot="items" slot-scope="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.calories }}</td>
-            <td class="text-xs-right">{{ props.item.fat }}</td>
-            <td class="text-xs-right">{{ props.item.carbs }}</td>
-            <td class="text-xs-right">{{ props.item.protein }}</td>
-            <td class="text-xs-right">{{ props.item.iron }}</td>
-          </template>
-        </v-data-table>
+  <v-layout wrap row>
+    <v-flex md10 sm10 xs10 offset-md1 offset-sm1 offset-xs1>
+      <v-layout wrap row grid-list-xl justify-start>
+          <v-flex md10 sm10 xs10 mb-2>
+            <v-layout wrap row grid-list-xl justify-start align-center>
+              <v-flex md1 sm1 xs1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">现在：</div>
+              </v-flex>
+               <v-flex md11 sm11 xs11 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left time-text">{{nowTime}}</div>
+              </v-flex>
+              <v-flex md1 sm1 xs1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间戳：</div>
+              </v-flex>
+               <v-flex md3 sm3 xs3 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                   <v-text-field v-model="timeSampleTime" type="number" solo></v-text-field>
+                </div>
+              </v-flex>
+              <v-flex md2 sm2 xs2 ml-1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-select :items="units" v-model="unit" label="Unit field" solo></v-select>
+                </div>
+              </v-flex>
+              <v-flex md1 sm1 xs1 ml-1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-text-field value="转换>>" type="button" @click="updateDatestr()" solo></v-text-field>
+                </div>
+              </v-flex>
+              <v-flex md3 sm3 xs3 ml-1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-text-field :value="dateStr" type="text"  solo></v-text-field>
+                </div>
+              </v-flex>
+ 
+            </v-layout>
+          </v-flex>
+          <v-flex md12 sm12 xs12> 
+            <div class="text-lg-left text-md-left text-sm-left text-xs-left"><h3>获取当前时间戳</h3></div> 
+          </v-flex>
+          <v-flex md12 sm12 xs12> 
+            <v-data-table
+                hide-headers
+                :items="expresses"
+                hide-actions
+                item-key="lang"
+                class="elevation-1"
+              >
+                <template slot="items" slot-scope="props">
+                  <td>{{ props.item.lang }}</td>
+                  <td class="text-xs-left" v-html="props.item.sentence"></td>
+                </template>
+              </v-data-table>
+          </v-flex>
+      </v-layout>
+         
     </v-flex>
   </v-layout>
 
@@ -25,126 +64,120 @@
 <script>
 export default {
   data: () => ({
+    units: ["秒", "毫秒"],
+    unit: "秒",
+    dateStr: '',
     now: new Date(),
-    headers: [
+    timeSample: new Date(),
+    timeSampleTime: Math.round(new Date().getTime() / 1000),
+    expresses: [
       {
-        text: "Dessert (100g serving)",
-        align: "left",
-        sortable: false,
-        value: "name"
-      },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" }
-    ],
-    desserts: [
-      {
-        value: false,
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%"
+        lang: "Swift",
+        sentence: "NSDate().timeIntervalSince1970"
       },
       {
-        value: false,
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%"
+        lang: "Go",
+        sentence: `import (<br>
+  "time"<br>
+)<br>
+int32(time.Now().Unix())`
       },
       {
-        value: false,
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%"
+        lang: "Java",
+        sentence: `// pure java<br>
+(int) (System.currentTimeMillis() / 1000)`
       },
       {
-        value: false,
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%"
+        lang: "JavaScript",
+        sentence: "Math.round(new Date() / 1000)"
       },
       {
-        value: false,
-        name: "Gingerbread",
-        calories: 356,
-        fat: 16.0,
-        carbs: 49,
-        protein: 3.9,
-        iron: "16%"
+        lang: "Objective-C",
+        sentence: "[[NSDate date] timeIntervalSince1970]"
       },
       {
-        value: false,
-        name: "Jelly bean",
-        calories: 375,
-        fat: 0.0,
-        carbs: 94,
-        protein: 0.0,
-        iron: "0%"
+        lang: "MySQL",
+        sentence: "SELECT unix_timestamp(now())"
       },
       {
-        value: false,
-        name: "Lollipop",
-        calories: 392,
-        fat: 0.2,
-        carbs: 98,
-        protein: 0,
-        iron: "2%"
+        lang: "SQLite",
+        sentence: "SELECT strftime('%s', 'now')"
       },
       {
-        value: false,
-        name: "Honeycomb",
-        calories: 408,
-        fat: 3.2,
-        carbs: 87,
-        protein: 6.5,
-        iron: "45%"
+        lang: "PHP",
+        sentence: `// pure php <br>
+time()`
       },
       {
-        value: false,
-        name: "Donut",
-        calories: 452,
-        fat: 25.0,
-        carbs: 51,
-        protein: 4.9,
-        iron: "22%"
+        lang: "Erlang",
+        sentence:
+          "calendar:datetime_to_gregorian_seconds(calendar:universal_time())-719528*24*3600."
       },
       {
-        value: false,
-        name: "KitKat",
-        calories: 518,
-        fat: 26.0,
-        carbs: 65,
-        protein: 7,
-        iron: "6%"
+        lang: "Python",
+        sentence: `import time<br>
+time.time()`
+      },
+      {
+        lang: "Ruby",
+        sentence: "Time.now.to_i"
+      },
+      {
+        lang: "Shell",
+        sentence: "date +%s"
       }
     ]
   }),
   created: function() {
+    this.dateStr = this.convertToDateStr(this.timeSampleTime)
     setInterval(() => {
       this.now = new Date();
     }, 1000);
   },
   computed: {
     nowTime() {
-      return parseInt(this.now.getTime() / 1000);
+      return Math.round(this.now.getTime() / 1000);
+    }
+  },
+  methods: {
+    convertToDateStr(mill) {
+      if (this.unit === "秒") {
+        mill = mill * 1000;
+      }
+      let d = new Date(mill);
+      let year = d.getFullYear();
+      let month = ("00" + (d.getMonth() + 1)).slice(-2);
+      let date = ("00" + d.getDate()).slice(-2);
+      let hour = ("00" + d.getHours()).slice(-2);
+      let min = ("00" + d.getMinutes()).slice(-2);
+      let sec = ("00" + d.getSeconds()).slice(-2);
+      let _mill = ("000" + d.getMilliseconds()).slice(-3);
+      return (
+        year +
+        "-" +
+        month +
+        "-" +
+        date +
+        " " +
+        hour +
+        ":" +
+        min +
+        ":" +
+        sec +
+        "." +
+        _mill
+      );
+    },
+    updateDatestr() {
+      this.dateStr = this.convertToDateStr(this.timeSampleTime)
     }
   }
 };
 </script>
 <style scoped>
+.time-text {
+  color: green;
+}
 </style>
 
 
