@@ -143,6 +143,8 @@ time.time()`
     convertToDateStr(mill) {
       if (this.unit === "秒") {
         mill = mill * 1000;
+      } else {
+        mill = mill
       }
       let d = new Date(mill);
       let year = d.getFullYear();
@@ -163,13 +165,11 @@ time.time()`
         ":" +
         min +
         ":" +
-        sec +
-        "." +
-        _mill
+        sec
       );
     },
     updateDatestr() {
-      this.dateStr = this.convertToDateStr(this.timeSampleTime)
+      this.dateStr = this.convertToDateStr(parseInt(this.timeSampleTime))
     }
   }
 };

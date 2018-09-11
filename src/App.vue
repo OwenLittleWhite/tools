@@ -38,7 +38,6 @@
 
 <script>
 import MyFooter from './components/MyFooter.vue'
-
 export default {
   name: 'app',
   components: {
