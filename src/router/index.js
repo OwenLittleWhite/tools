@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Timestamp from '@/components/tools/Timestamp'
+import Timestamp from '@/components/Timestamp'
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -11,7 +11,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/tools/timestamp',
+      path: '/timestamp',
       name: 'Timestamp',
       component: Timestamp
     }

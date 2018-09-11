@@ -47,8 +47,8 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        { icon: 'timer', title: '时间戳', link: '/tools/timestamp' },
-        { icon: 'no_encryption', title: 'base64编/解码', link: '/tools/base64' }
+        { icon: 'timer', title: '时间戳', link: '/timestamp' },
+        { icon: 'no_encryption', title: 'base64编/解码', link: '/base64' }
       ]
     }
   },

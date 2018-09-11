@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
       <v-flex xs12 sm12 class="text-xs-center text-sm-center">
-        <v-btn large class="info" to="/tools/timestamp">探索更多的工具</v-btn>
+        <v-btn large class="info" to="/timestamp">探索更多的工具</v-btn>
       </v-flex>
     </v-layout>
     <v-layout row class="mt-2">
@@ -27,7 +27,7 @@ export default {
         id:1,
         name: '时间戳',
         image: require('../assets/clock.jpg'),
-        url: '/tools/timestamp'
+        url: '/timestamp'
       },{
         id:2,
         name: 'base64',
