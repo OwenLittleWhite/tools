@@ -1,45 +1,62 @@
 <template>
-  <v-footer
-    height="auto"
-    color="primary lighten-1"
-    class="info"
-    align-end
-  >
-    <v-layout
-      justify-space-between
+<v-container>
+<v-layout row wrap class="mt-5" justify-space-between="row">
+   <v-layout
+      justify-space-around
       row
       wrap
-    >
-      <v-btn
-        v-for="link in links"
-        :key="link.title"
-        color="white"
-        flat
-        round
-      >
-        {{ link.title }}
-      </v-btn>
-      <v-flex
-        primary
+    >      
+    <v-flex
         lighten-2
         py-3
         text-xs-center
-        white--text
+        grey--text
         xs12
       >
-        Copyright &copy;2018 — <strong>Owen</strong>
+      <v-btn
+        small
+        v-for="link in leftLinks"
+        :key="link.title"
+        color="grey"
+        flat
+        round
+        :href="link.url"
+        target="_blank"
+      >
+        {{ link.title }}
+      </v-btn>
+
+        Copyright &copy;{{new Date().getFullYear()}} — <a href="http://owenlittlewhite.top" target="_blank" title="author">Owen</a>
+      <v-btn
+        small
+        v-for="link in rightLinks"
+        :key="link.title"
+        color="grey"
+        flat
+        round
+        :href="link.url"
+        target="_blank"
+      >
+        {{ link.title }}
+      </v-btn>
       </v-flex>
     </v-layout>
-  </v-footer>
+
+    </v-layout>
+</v-container>
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      links: [
-        {title: 'home', url: 'http://owenlittlewhite.top'},
-        {title: 'Github', url: ''}
-      ]
-    })
-  }
+export default {
+  data: () => ({
+    leftLinks: [
+      { title: "support", url: "https://cn.vuejs.org/" },
+      { title: "Github", url: "https://github.com/OwenLittleWhite/tools" }
+    ],
+    rightLinks: [
+      { title: "Contact me", url: "mailto:253065903@qq.com" },
+      { title: "Blog", url: "https://owenlittlewhite.github.io/" }
+    ]
+  })
+};
 </script>
