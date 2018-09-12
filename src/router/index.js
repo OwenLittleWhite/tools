@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Timestamp from '@/components/tools/Timestamp'
 Vue.use(Router)
 export default new Router({
+  base: '/tools',
   routes: [
     {
       path: '/',
