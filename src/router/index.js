@@ -17,7 +17,7 @@ export default new Router({
       component: Timestamp
     }
   ],
-  mode: 'history',
+  mode: 'hash',
   scrollBehavior() {
     return { x: 0, y: 0 }
   }

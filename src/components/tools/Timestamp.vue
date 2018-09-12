@@ -1,35 +1,35 @@
 <template>
 <v-container>
   <v-layout wrap row>
-    <v-flex md10 sm10 xs10 offset-md1 offset-sm1 offset-xs1>
+    <v-flex md10 sm12 xs12 offset-md1>
       <v-layout wrap row grid-list-xl justify-start>
           <v-flex md10 sm10 xs10 mb-2>
             <v-layout wrap row grid-list-xl justify-start align-center>
-              <v-flex md1 sm2 xs2 mb-2>
+              <v-flex md1 sm3 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">现在：</div>
               </v-flex>
-               <v-flex md11 sm11 xs11 mb-2>
+               <v-flex md11 sm9 xs9 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left time-text">{{nowTime}}</div>
               </v-flex>
-              <v-flex md1 sm2 xs2 mb-2>
+              <v-flex md1 sm2 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间戳：</div>
               </v-flex>
-               <v-flex md3 sm4 xs4 mb-2>
+               <v-flex md3 sm8 xs8 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                    <v-text-field v-model="timeSampleTime" type="number" solo></v-text-field>
                 </div>
               </v-flex>
-              <v-flex md2 sm3 xs3 ml-1 mb-2>
+              <v-flex md2 sm5 xs5 ml-1 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-select :items="units" v-model="unit" label="Unit field" solo></v-select>
                 </div>
               </v-flex>
-              <v-flex md1 sm2 xs2 ml-1 mb-2>
+              <v-flex md1 sm4 xs4 ml-3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                  <v-text-field value="转换>>" type="button" @click="updateDatestr()" solo></v-text-field>
+                  <v-btn @click="updateDatestr()" block bottom color="info">转换>></v-btn>
                 </div>
               </v-flex>
-              <v-flex md3 sm4 xs4 ml-1 mb-2>
+              <v-flex md3 sm10 xs10 ml-3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-text-field :value="dateStr" type="text"  solo></v-text-field>
                 </div>

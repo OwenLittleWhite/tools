@@ -12,6 +12,8 @@
         text-xs-center
         grey--text
         xs12
+        md12
+        sm12
       >
       <v-btn
         small
