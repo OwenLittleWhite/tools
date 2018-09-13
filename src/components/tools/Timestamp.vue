@@ -3,7 +3,7 @@
   <v-layout wrap row>
     <v-flex md10 sm12 xs12 offset-md1>
       <v-layout wrap row grid-list-xl justify-start>
-          <v-flex md10 sm10 xs10 mb-2>
+          <v-flex md9 sm10 xs12 mb-2>
             <v-layout wrap row grid-list-xl justify-start align-center>
               <v-flex md1 sm3 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">现在：</div>
@@ -24,17 +24,39 @@
                   <v-select :items="units" v-model="unit" label="Unit field" solo></v-select>
                 </div>
               </v-flex>
-              <v-flex md1 sm4 xs4 ml-3 mb-2>
+              <v-flex md2 sm4 xs4 ml-2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
                   <v-btn @click="updateDatestr()" block bottom color="info">转换>></v-btn>
                 </div>
               </v-flex>
-              <v-flex md3 sm10 xs10 ml-3 mb-2>
+              <v-flex md3 sm10 xs10 ml-2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                  <v-text-field :value="dateStr" type="text"  solo></v-text-field>
+                  <v-text-field v-model="dateStr" type="text"  solo></v-text-field>
                 </div>
               </v-flex>
- 
+              <v-flex md1 sm2 xs3 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间：</div>
+              </v-flex>
+               <v-flex md3 sm8 xs8 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                   <v-text-field v-model="dateStr2" type="text" solo></v-text-field>
+                </div>
+              </v-flex>
+              <v-flex md2 sm4 xs4 ml-2 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-btn @click="updateTime2()" block bottom color="info">转换>></v-btn>
+                </div>
+              </v-flex>
+              <v-flex md3 sm10 xs10 ml-2 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-text-field v-model="time2"  solo></v-text-field>
+                </div>
+              </v-flex>
+              <v-flex md2 sm5 xs5 ml-1 mb-2>
+                <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+                  <v-select :items="units" v-model="unit2" label="Unit field" solo></v-select>
+                </div>
+              </v-flex>
             </v-layout>
           </v-flex>
           <v-flex md12 sm12 xs12> 
@@ -66,7 +88,10 @@ export default {
   data: () => ({
     units: ["秒", "毫秒"],
     unit: "秒",
+    unit2: '秒',
     dateStr: '',
+    time2: '',
+    dateStr2: '',
     now: new Date(),
     timeSample: new Date(),
     timeSampleTime: Math.round(new Date().getTime() / 1000),
@@ -129,7 +154,7 @@ time.time()`
     ]
   }),
   created: function() {
-    this.dateStr = this.convertToDateStr(this.timeSampleTime)
+    this.dateStr2 = this.convertToDateStr(new Date().getTime(), '毫秒')
     setInterval(() => {
       this.now = new Date();
     }, 1000);
@@ -140,8 +165,8 @@ time.time()`
     }
   },
   methods: {
-    convertToDateStr(mill) {
-      if (this.unit === "秒") {
+    convertToDateStr(mill, unit) {
+      if (unit === "秒") {
         mill = mill * 1000;
       }
       let d = new Date(mill);
@@ -166,7 +191,14 @@ time.time()`
       );
     },
     updateDatestr() {
-      this.dateStr = this.convertToDateStr(parseInt(this.timeSampleTime))
+      this.dateStr = this.convertToDateStr(parseInt(this.timeSampleTime), this.unit)
+    },
+    updateTime2() {
+      if (this.unit2 === '秒') {
+        this.time2 = Math.round(new Date(this.dateStr2).getTime() / 1000)
+      } else {
+        this.time2 = new Date(this.dateStr2).getTime()
+      }
     }
   }
 };
