@@ -88,10 +88,10 @@ export default {
   data: () => ({
     units: ["秒", "毫秒"],
     unit: "秒",
-    unit2: '秒',
-    dateStr: '',
-    time2: '',
-    dateStr2: '',
+    unit2: "秒",
+    dateStr: "",
+    time2: "",
+    dateStr2: "",
     now: new Date(),
     timeSample: new Date(),
     timeSampleTime: Math.round(new Date().getTime() / 1000),
@@ -154,7 +154,7 @@ time.time()`
     ]
   }),
   created: function() {
-    this.dateStr2 = this.convertToDateStr(new Date().getTime(), '毫秒')
+    this.dateStr2 = this.convertToDateStr(new Date().getTime(), "毫秒");
     setInterval(() => {
       this.now = new Date();
     }, 1000);
@@ -177,27 +177,20 @@ time.time()`
       let min = ("00" + d.getMinutes()).slice(-2);
       let sec = ("00" + d.getSeconds()).slice(-2);
       return (
-        year +
-        "-" +
-        month +
-        "-" +
-        date +
-        " " +
-        hour +
-        ":" +
-        min +
-        ":" +
-        sec
+        year + "-" + month + "-" + date + " " + hour + ":" + min + ":" + sec
       );
     },
     updateDatestr() {
-      this.dateStr = this.convertToDateStr(parseInt(this.timeSampleTime), this.unit)
+      this.dateStr = this.convertToDateStr(
+        parseInt(this.timeSampleTime),
+        this.unit
+      );
     },
     updateTime2() {
-      if (this.unit2 === '秒') {
-        this.time2 = Math.round(new Date(this.dateStr2).getTime() / 1000)
+      if (this.unit2 === "秒") {
+        this.time2 = Math.round(new Date(this.dateStr2).getTime() / 1000);
       } else {
-        this.time2 = new Date(this.dateStr2).getTime()
+        this.time2 = new Date(this.dateStr2).getTime();
       }
     }
   }

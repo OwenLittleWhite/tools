@@ -23,22 +23,25 @@
 export default {
   data: function() {
     return {
-      tools: [{
-        id:1,
-        name: '时间戳',
-        image: require('../assets/clock.jpg'),
-        url: '/timestamp'
-      },{
-        id:2,
-        name: 'base64',
-        image: require('../assets/encode.jpg'),
-        url: '/dsf/'
-      }]
+      tools: [
+        {
+          id: 1,
+          name: "时间戳",
+          image: require("../assets/clock.jpg"),
+          url: "/timestamp"
+        },
+        {
+          id: 2,
+          name: "base64",
+          image: require("../assets/encode.jpg"),
+          url: "/dsf/"
+        }
+      ]
     };
   },
-  methods:{
+  methods: {
     jump: function(url) {
-      location.href = url
+      location.href = url;
     }
   }
 };
