@@ -1,7 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="sideNav"  absolute
-      temporary>
+    <v-navigation-drawer v-model="sideNav" absolute temporary>
       <v-list>
         <v-list-tile v-for="item in menuItems" :key="item.title" :to="item.link" exact>
 
@@ -26,7 +25,8 @@
           <v-icon left>
             {{ item.icon }}
           </v-icon>
-          {{ item.title }}</v-btn>
+          {{ item.title }}
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <main>
@@ -37,9 +37,9 @@
 </template>
 
 <script>
-import MyFooter from './components/MyFooter.vue'
+import MyFooter from "./components/MyFooter.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
     MyFooter
   },
@@ -47,23 +47,20 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        { icon: 'timer', title: '时间戳', link: '/timestamp' },
-        { icon: 'no_encryption', title: 'base64编/解码', link: '/base64' }
+        { icon: "timer", title: "时间戳", link: "/timestamp" },
+        { icon: "no_encryption", title: "base64编/解码", link: "/base64" }
       ]
-    }
+    };
   },
 
-  created() {
-  },
-  computed: {
-  }
-}
+  created() {},
+  computed: {}
+};
 </script>
 
 <style>
-
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

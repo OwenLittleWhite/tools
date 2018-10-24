@@ -1,22 +1,22 @@
 <template>
-<v-container>
-  <v-layout wrap row>
-    <v-flex md10 sm12 xs12 offset-md1>
-      <v-layout wrap row grid-list-xl justify-start>
+  <v-container>
+    <v-layout wrap row>
+      <v-flex md10 sm12 xs12 offset-md1>
+        <v-layout wrap row grid-list-xl justify-start>
           <v-flex md9 sm10 xs12 mb-2>
             <v-layout wrap row grid-list-xl justify-start align-center>
               <v-flex md1 sm3 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">现在：</div>
               </v-flex>
-               <v-flex md11 sm9 xs9 mb-2>
+              <v-flex md11 sm9 xs9 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left time-text">{{nowTime}}</div>
               </v-flex>
               <v-flex md1 sm2 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间戳：</div>
               </v-flex>
-               <v-flex md3 sm8 xs8 mb-2>
+              <v-flex md3 sm8 xs8 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                   <v-text-field v-model="timeSampleTime" type="number" solo></v-text-field>
+                  <v-text-field v-model="timeSampleTime" type="number" solo></v-text-field>
                 </div>
               </v-flex>
               <v-flex md2 sm5 xs5 ml-1 mb-2>
@@ -31,15 +31,15 @@
               </v-flex>
               <v-flex md3 sm10 xs10 ml-2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                  <v-text-field v-model="dateStr" type="text"  solo></v-text-field>
+                  <v-text-field v-model="dateStr" type="text" solo></v-text-field>
                 </div>
               </v-flex>
               <v-flex md1 sm2 xs3 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">时间：</div>
               </v-flex>
-               <v-flex md3 sm8 xs8 mb-2>
+              <v-flex md3 sm8 xs8 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                   <v-text-field v-model="dateStr2" type="text" solo></v-text-field>
+                  <v-text-field v-model="dateStr2" type="text" solo></v-text-field>
                 </div>
               </v-flex>
               <v-flex md2 sm4 xs4 ml-2 mb-2>
@@ -49,7 +49,7 @@
               </v-flex>
               <v-flex md3 sm10 xs10 ml-2 mb-2>
                 <div class="text-lg-left text-md-left text-sm-left text-xs-left">
-                  <v-text-field v-model="time2"  solo></v-text-field>
+                  <v-text-field v-model="time2" solo></v-text-field>
                 </div>
               </v-flex>
               <v-flex md2 sm5 xs5 ml-1 mb-2>
@@ -59,29 +59,25 @@
               </v-flex>
             </v-layout>
           </v-flex>
-          <v-flex md12 sm12 xs12> 
-            <div class="text-lg-left text-md-left text-sm-left text-xs-left"><h3>获取当前时间戳</h3></div> 
+          <v-flex md12 sm12 xs12>
+            <div class="text-lg-left text-md-left text-sm-left text-xs-left">
+              <h3>获取当前时间戳</h3>
+            </div>
           </v-flex>
-          <v-flex md12 sm12 xs12> 
-            <v-data-table
-                hide-headers
-                :items="expresses"
-                hide-actions
-                item-key="lang"
-                class="elevation-1"
-              >
-                <template slot="items" slot-scope="props">
-                  <td>{{ props.item.lang }}</td>
-                  <td class="text-xs-left" v-html="props.item.sentence"></td>
-                </template>
-              </v-data-table>
+          <v-flex md12 sm12 xs12>
+            <v-data-table hide-headers :items="expresses" hide-actions item-key="lang" class="elevation-1">
+              <template slot="items" slot-scope="props">
+                <td>{{ props.item.lang }}</td>
+                <td class="text-xs-left" v-html="props.item.sentence"></td>
+              </template>
+            </v-data-table>
           </v-flex>
-      </v-layout>
-         
-    </v-flex>
-  </v-layout>
+        </v-layout>
 
-</v-container>
+      </v-flex>
+    </v-layout>
+
+  </v-container>
 </template>
 <script>
 export default {
