@@ -41,7 +41,6 @@
 
 <script>
 import Base64 from "../../lib/base64";
-let base64 = new Base64();
 export default {
   data: () => {
     return {
@@ -52,14 +51,14 @@ export default {
   methods: {
     encrypt: function() {
       try {
-        this.encryptStr = base64.encode(this.decryptStr);
+        this.encryptStr = Base64.encode(this.decryptStr);
       } catch (error) {
         this.encryptStr = "";
       }
     },
     decrypt: function() {
       try {
-        this.decryptStr = base64.decode(this.encryptStr);
+        this.decryptStr = Base64.decode(this.encryptStr);
       } catch (error) {
         this.decryptStr = "";
       }
